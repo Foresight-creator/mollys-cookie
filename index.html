@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="white" />
+<meta name="apple-mobile-web-app-title" content="Molly's Cookie" />
+<title>hi mollyyyy</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+background: white;
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+min-height: -webkit-fill-available;
+font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+overflow: hidden;
+}
+#app {
+width: 100%;
+height: 100vh;
+height: -webkit-fill-available;
+background: white;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+overflow: hidden;
+}
+#welcome-screen {
+position: absolute;
+inset: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+gap: 14px;
+z-index: 10;
+background: white;
+}
+.hi-text {
+font-size: 72px;
+font-weight: 900;
+color: black;
+letter-spacing: -2px;
+opacity: 0;
+transform: translateY(20px);
+animation: fadeUp 0.9s ease 0.3s forwards;
+text-shadow: 0 0 12px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.5), 0 0 60px rgba(0,0,0,0.2);
+}
+.sub-text {
+font-size: 22px;
+font-weight: 700;
+color: #222;
+opacity: 0;
+transform: translateY(12px);
+animation: fadeUp 0.7s ease 1s forwards;
+text-shadow: 0 0 10px rgba(0,0,0,0.8), 0 0 24px rgba(0,0,0,0.3);
+}
+@keyframes fadeUp {
+to { opacity: 1; transform: translateY(0); }
+}
+#welcome-screen.fade-out .hi-text,
+#welcome-screen.fade-out .sub-text {
+transition: opacity 0.6s ease, transform 0.6s ease;
+opacity: 0;
+transform: translateY(-14px);
+}
+#cookie-wrap {
+position: absolute;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 20px;
+}
+#cookie-btn {
+width: 0px;
+height: 0px;
+border-radius: 50%;
+border: none;
+cursor: pointer;
+background: transparent;
+padding: 0;
+opacity: 0;
+-webkit-tap-highlight-color: transparent;
+transition: width 0.6s cubic-bezier(0.34,1.3,0.64,1),
+height 0.6s cubic-bezier(0.34,1.3,0.64,1),
+opacity 0.5s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+}
+#cookie-btn.grow { width: 180px; height: 180px; opacity: 1; }
+#cookie-btn:active { transform: scale(0.93); }
+#cookie-btn svg {
+width: 180px;
+height: 180px;
+min-width: 180px;
+display: block;
+filter: drop-shadow(0 4px 14px rgba(0,0,0,0.13));
+}
+.click-msg {
+font-size: 20px;
+font-weight: 700;
+color: black;
+opacity: 0;
+transform: scale(0.8);
+transition: opacity 0.4s ease, transform 0.4s ease;
+min-height: 30px;
+text-align: center;
+text-shadow: 0 0 10px rgba(0,0,0,0.8), 0 0 24px rgba(0,0,0,0.3);
+}
+.click-msg.pop { opacity: 1; transform: scale(1); }
+</style>
+</head>
+<body>
+<div id="app">
+<div id="welcome-screen">
+<div class="hi-text">hi mollyyyy</div>
+<div class="sub-text">so happy you're here ✨</div>
+</div>
+<div id="cookie-wrap">
+<button id="cookie-btn" onclick="cookieClick()">
+<svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+<circle cx="80" cy="80" r="74" fill="#C8872C"/>
+<circle cx="80" cy="80" r="68" fill="#D4944B"/>
+<ellipse cx="56" cy="52" rx="10" ry="9" fill="#6B3A1F"/>
+<ellipse cx="102" cy="65" rx="8" ry="8" fill="#6B3A1F"/>
+<ellipse cx="70" cy="100" rx="9" ry="9" fill="#6B3A1F"/>
+<ellipse cx="108" cy="100" rx="7" ry="8" fill="#6B3A1F"/>
+<ellipse cx="48" cy="90" rx="8" ry="7" fill="#6B3A1F"/>
+<ellipse cx="88" cy="44" rx="6" ry="7" fill="#6B3A1F"/>
+<ellipse cx="116" cy="78" rx="6" ry="6" fill="#6B3A1F"/>
+<circle cx="56" cy="52" r="10" fill="#7B4229" opacity="0.6"/>
+<circle cx="102" cy="65" r="8" fill="#7B4229" opacity="0.6"/>
+<circle cx="70" cy="100" r="9" fill="#7B4229" opacity="0.6"/>
+<circle cx="108" cy="100" r="7.5" fill="#7B4229" opacity="0.6"/>
+<circle cx="48" cy="90" r="8" fill="#7B4229" opacity="0.6"/>
+<circle cx="88" cy="44" r="6.5" fill="#7B4229" opacity="0.6"/>
+<circle cx="116" cy="78" r="6" fill="#7B4229" opacity="0.6"/>
+<circle cx="64" cy="72" r="3" fill="#B8762A" opacity="0.5"/>
+<circle cx="92" cy="84" r="2.5" fill="#B8762A" opacity="0.5"/>
+<circle cx="76" cy="58" r="2" fill="#B8762A" opacity="0.4"/>
+<circle cx="100" cy="110" r="2" fill="#B8762A" opacity="0.4"/>
+<circle cx="48" cy="112" r="3" fill="#B8762A" opacity="0.4"/>
+<circle cx="120" cy="95" r="2.5" fill="#B8762A" opacity="0.4"/>
+<defs>
+<radialGradient id="shine" cx="35%" cy="30%" r="60%">
+<stop offset="0%" stop-color="white"/>
+<stop offset="100%" stop-color="transparent"/>
+</radialGradient>
+</defs>
+<circle cx="80" cy="80" r="68" fill="url(#shine)" opacity="0.18"/>
+</svg>
+</button>
+<div class="click-msg" id="click-msg"></div>
+</div>
+</div>
+<script>
+let clickCount = 0;
+const messages = ["🎉 yay mollyyyy!", "😊 you found it!", "🍪 nom nom nom!", "✨ so sweet!", "💛 hi hi hi!!", "🌟 cookie queen!"];
+const ntfyMessages = ["someone clicked your cookie! 🍪", "cookie click again — they love you!", "nom nom nom 🍪", "another cookie click ✨", "hi hi hi!! 💛", "cookie queen strikes again 🌟"];
+
+setTimeout(() => {
+const welcome = document.getElementById('welcome-screen');
+welcome.classList.add('fade-out');
+setTimeout(() => {
+welcome.style.display = 'none';
+document.getElementById('cookie-btn').classList.add('grow');
+}, 600);
+}, 3200);
+
+function cookieClick() {
+const btn = document.getElementById('cookie-btn');
+const msg = document.getElementById('click-msg');
+msg.classList.remove('pop');
+msg.textContent = messages[clickCount % messages.length];
+void msg.offsetWidth;
+msg.classList.add('pop');
+btn.style.transform = 'scale(0.88) rotate(-6deg)';
+setTimeout(() => {
+btn.style.transition = 'transform 0.35s cubic-bezier(0.34,1.56,0.64,1)';
+btn.style.transform = '';
+}, 90);
+setTimeout(() => { btn.style.transition = ''; }, 450);
+fetch('https://ntfy.sh/mollys-cookie', {
+method: 'POST',
+body: ntfyMessages[clickCount % ntfyMessages.length],
+headers: { 'Title': '🍪 cookie button pressed!' }
+});
+clickCount++;
+}
+</script>
+</body>
+</html>
